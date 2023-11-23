@@ -1,0 +1,7 @@
+[user]
+	email = piotr1morawiec@gmail.com
+	name = pmorawie
+[merge]
+	tool = emacs
+[core]
+	editor = emacs
