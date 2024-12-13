@@ -114,3 +114,8 @@ fi
 
 # PROMPT (from Bash PS1 generator / Bash Prompt generator)
 export PS1='\[\e[31m\]\u\[\e[m\]\[\e[32m\] @ \[\e[m\]\[\e[34m\]\h\[\e[m\] \[\e[33m\] [ \w ]\[\e[m\] \[\e[31m\]\\$\[\e[m\] '
+
+# Prompt showing git branch
+BASIC_PS1='\[\e[0;31m\]\u\[\e[0m\] \[\e[0;32m\]@\[\e[0m\] \[\e[0;34m\]\h\[\e[0m\] \[\e[0;33m\][ \w ]\[\e[0m\] \[\e[0;31m\]$(parse_git_branch) \$\[\e[0m\] '
+# echo "----$PS1----"
+export PS1="$BASIC_PS1"

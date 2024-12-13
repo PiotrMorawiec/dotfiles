@@ -12,3 +12,7 @@ function cl() {
     # use your preferred ls command
         ls -F --color=auto
 }
+
+parse_git_branch() {
+ git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
+}
