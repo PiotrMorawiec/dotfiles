@@ -23,6 +23,16 @@ alias gsuir="git submodule update --init --recursive"
 alias gsf="git submodule foreach"
 alias gsfr="git submodule foreach 'git reset --hard'"
 
+alias gwl="git worktree list"
+alias gwa="git worktree add"
+alias gwe="git worktree remove"
+alias gwm="git worktree move"
+alias gwlk="git worktree lock"
+alias gwuk="git worktree unlock"
+alias gwp="git worktree prune"
+
+alias glf='git show --pretty="" --name-only'
+
 alias ll="ls -l --color=auto"
 alias lt="ls --human-readable --size -1 -S --classify"
 
@@ -53,3 +63,10 @@ alias grep='grep --color=auto'
 alias egrep='egrep --color=auto'
 alias fgrep='fgrep --color=auto'
 
+# Some verification-related stuff
+alias verdi_open_fsdb="qsub -V -b y -q inter.q -l vf=100G verdi -sx -ssf"
+alias verdi_open_cov="qsub -V -b y -q inter.q -l vf=100G verdi -sx -cov -covdir"
+
+# Some examples how to use lmstat
+alias check_cadence_lic="lmstat -a -c /data/tools/license_files/cadence_license.dat"
+alias check_avery_lic="lmstat -a -c /data/tools/license_files/avery_lic.dat"
