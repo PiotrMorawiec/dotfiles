@@ -36,6 +36,12 @@ alias glf='git show --pretty="" --name-only'
 alias ll="ls -l --color=auto"
 alias lt="ls --human-readable --size -1 -S --classify"
 
+alias dir='dir --color=auto'
+alias vdir='vdir --color=auto'
+
+export CLICOLOR=1
+export LSCOLORS='GxFxCxDxBxegedabagaced'
+
 # Print only mounted disks
 alias mnt="mount | awk -F' ' '{ printf \"%s\t%s\n\",\$1,\$3; }' | column -t | egrep ^/dev/ | sort"
 

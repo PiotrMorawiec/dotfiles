@@ -43,3 +43,12 @@ fi
 
 # Reload WiFi firmware module (required on Thinkpads for some reason)
 # sudo modprobe -r iwlwifi; sudo modprobe iwlwifi
+
+##
+# Your previous /Users/piotrm/.profile file was backed up as /Users/piotrm/.profile.macports-saved_2025-01-23_at_13:52:13
+##
+
+# MacPorts Installer addition on 2025-01-23_at_13:52:13: adding an appropriate PATH variable for use with MacPorts.
+export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
+# Finished adapting your PATH environment variable for use with MacPorts.
+

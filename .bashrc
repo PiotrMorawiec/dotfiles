@@ -76,21 +76,10 @@ esac
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
     alias ls='ls --color=auto'
-    #alias dir='dir --color=auto'
-    #alias vdir='vdir --color=auto'
-
-    #alias grep='grep --color=auto'
-    #alias fgrep='fgrep --color=auto'
-    #alias egrep='egrep --color=auto'
 fi
 
 # colored GCC warnings and errors
-#export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
-
-# some more ls aliases
-#alias ll='ls -l'
-#alias la='ls -A'
-#alias l='ls -CF'
+export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
 # Alias definitions.
 # You may want to put all your additions into a separate file like
@@ -112,10 +101,52 @@ if ! shopt -oq posix; then
   fi
 fi
 
-# PROMPT (from Bash PS1 generator / Bash Prompt generator)
-export PS1='\[\e[31m\]\u\[\e[m\]\[\e[32m\] @ \[\e[m\]\[\e[34m\]\h\[\e[m\] \[\e[33m\] [ \w ]\[\e[m\] \[\e[31m\]\\$\[\e[m\] '
+# MacOS specific (Homebrew)
+if [ -d "/opt/homebrew/bin" ]; then
+  export PATH="/opt/homebrew/bin:$PATH"
+fi
+
+# MacOS specific (ports)
+if [ -d "/opt/local/bin" ]; then
+  export PATH="/opt/local/bin:$PATH"
+fi
+
+# MacOS specific (ports)
+if [ -d "/opt/local/sbin" ]; then
+  export PATH="/opt/local/sbin:$PATH"
+fi
+
+# Add Visual Studio Code (code)
+export PATH="/Applications/Visual Studio Code.app/Contents/Resources/app/bin:$PATH"
+
+# Add emacs to comandline
+alias emacs="open -a Emacs"
+
+export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
 
 # Prompt showing git branch
 BASIC_PS1='\[\e[0;31m\]\u\[\e[0m\] \[\e[0;32m\]@\[\e[0m\] \[\e[0;34m\]\h\[\e[0m\] \[\e[0;33m\][ \w ]\[\e[0m\] \[\e[0;31m\]$(parse_git_branch) \$\[\e[0m\] '
-# echo "----$PS1----"
 export PS1="$BASIC_PS1"
+
+# For jenkins
+export JAVA_HOME=$(/usr/libexec/java_home)
+
+set_gcc_13() {
+  # brew search gcc
+  # brew install gcc@13
+  export CC="$(brew --prefix gcc@13)/bin/gcc-13"
+  export CXX="$(brew --prefix gcc@13)/bin/g++-13"
+}
+
+
+set_gcc_14() {
+  export CC="$(brew --prefix gcc@13)/bin/gcc-14"
+  export CXX="$(brew --prefix gcc@13)/bin/g++-14"
+}
+
+export CFLAGS="-isysroot $(xcrun -show-sdk-path) $CFLAGS"
+export CXXFLAGS="-isysroot $(xcrun -show-sdk-path) $CXXFLAGS"
+export LDFLAGS="-L$(xcrun -show-sdk-path)/usr/lib $LDFLAGS"
+
+
+
